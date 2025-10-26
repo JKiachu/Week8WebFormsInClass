@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> {%block title%} Guest List {%endblock%}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="{{url_for('profile')}}">Profile Form</a>
+        <a href="{{url_for('feedback')}}">Feedback Form</a>
+        <a href="{{url_for('admin_feedback')}}">Feedback - Admin</a>
+    </nav>
+    {% block content %}{% endblock %}
+</body>
+</html>

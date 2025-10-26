@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+{%block title%}{{super()}} - Feedback Admin {%endblock%}
+{%block content%}
+
+<h1>All Feedback</h1>
+<table class="table table-stiped" border="1">
+    <tr>
+        <th>Rating</th>
+        <th>Comments</th>
+    </tr>
+    {%for feedback in feedbacks%}
+    <tr>
+        <td>{{ feedback.rating }}</td>
+        <td>{{ feedback.comment }}</td>
+        <td>
+            <div>
+                <a href="{{url_for('admin_feedback_edit')}}?feedbackId={{feedback.id}}"><button>Edit</button></a>
+            </div>
+        </td>
+        <td>
+            <div>
+                <form method="POST" action="{{url_for('admin_feedbackDeleteButton')}}">
+                    <input name="feedbackId" type="hidden" value="{{feedback.id}}"/>
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        </td>
+    </tr>
+
+    {%endfor%}
+</table>
+<body>
+    <nav>
+        <a href="{{url_for('admin_feedback_append')}}">Append Feedback</a>
+        <p></p>
+        <a href="{{url_for('admin_feedback_deleteFirst')}}">Delete First</a>
+        <a href="{{url_for('admin_feedback_wrongOpinions')}}">Delete the wrong opinions</a>
+        <a href="{{url_for('admin_feedback_delete6orMore')}}">Delete Ratings 6 or more</a>
+        <a href="{{url_for('admin_feedback_delAll')}}">Delete All</a>
+        <p></p>
+        <a href="{{url_for('admin_feedback_addSampleData')}}">Add Sample Data</a>
+    </nav>
+    <h3>Delete Feedbacks by Comment</h3>
+    <form action="{{ url_for('admin_feedback_deleteNoComments') }}" method="post">
+    <label for="comment">Enter comment value to delete:</label>
+    <input type="text" name="comment" id="comment" placeholder="e.g., n/a, none">
+    <button type="submit">Delete Feedbacks</button>
+</form> 
+</body>
+
+{%endblock%}

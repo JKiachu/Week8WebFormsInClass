@@ -1,0 +1,48 @@
+{%extends "base.html"%}
+
+{% block title%}{{super()}} - Feedback {%endblock%}
+
+{%block content%}
+<h2>Event Feedback</h2>
+
+<form action="{{url_for('admin_feedback_edit')}}" method="post">
+    <input type="hidden" name="feedbackId" id="feedbackId" value="{{feedback.id}}" />
+    <div>
+        <label for="rating">Rate the event(1-10):</label>
+        <input type="number" 
+            name="rating"  
+            id="rating" 
+            value="{{feedback.rating}}"
+            min="1" 
+            max="10" 
+            required
+            />
+    </div>
+    <div>
+        <label for="comment">Your Comment:</label>
+        <textarea id="comment" name="comment" rows="4" placeholder="What did you want to change?">{{feedback.comment if feedback.comment else ''}}</textarea>
+    </div>
+
+    <button type="submit">Submit Feedback</button>
+    </form>
+   <!-- Apparently this was how the java was supposed to work for my use case
+    <script>
+        function setRatingSelected(selectelement, value) {
+            if(inputelement && value) {
+                inputelement.value = value;
+            }
+        }
+        setRatingSelected(document.getElementById('rating'), "{{feedback.rating}}");
+    </script>
+    <script>
+        function setCommentBox(textareaElement, value) {
+            if (textareaElement, value) {
+                textareaElement.value = value || '';
+            }
+        }
+        setCommentBox(
+            document.getElementById("Comments"),
+            "{{feedback.comment if feedback.comment else ''}}"
+        );
+    </script>-->
+    {%endblock%}

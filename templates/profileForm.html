@@ -1,0 +1,60 @@
+<!-- page that contains the input form -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Justice</h2>
+{%if error%}
+<p class = error>{{error}}</p>
+{%endif%}
+
+<form action="" method="post">
+    <div>
+       <label for="name">Name *: </label>
+       <input type="text" name="name" id="name" required> 
+    </div>
+    <div>
+        <label for="email">Email*: </label>
+        <input type="email" name="email" id="email" required>
+    </div>
+    <div>
+        <label for="quan">Total Quantity: * </label>
+        <input type="number" name="quan" id="quan" min="1" max="10" required>
+    </div>
+    <div>
+        <label for="comments">Comments or Issues: </label>
+        <textarea name="comments" id="comments" rows="4"></textarea>
+    </div>
+    <div>
+        <label for="rel">Relationship to me *:</label>
+        <select id="rel" name="rel" required>
+            <option value="">What is guest's relationship to me</option>
+            <option value="parent">Parent / Parent-in-law</option>
+            <option value="sibling">Sibling / Sibling-in-law</option>
+            <option value="other family">Other family member</option>
+            <option value="coworker etc.">Coworker or business</option>
+            <option value="friend">Friend</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+<!--    <div>
+        <label for="rel">The relation *:</label>
+        <select if="rel" name="rel" required>
+            <option value="">guests relation?</option>
+            <option value="parent">Parent / In-Law</option>
+            <option value="sibling">Sibling / In-Law</option>
+            <option value="famOutsiders">Other family</option>
+            <option value="acquaintance">Acquaintance</option>
+            <option value="fren">Frens</option>
+            <option value="other">Other</option>
+        </select>
+    </div><-->
+    <div>
+        <label for="accommodations">Accommodations Required?</label>
+        <input type="checkbox" id="accommodations" name="accommodations" value="yes">
+    </div>
+    <div>
+        <button type="submit">Save Profile</button>
+    </div>
+
+</form>
+{%endblock%}
