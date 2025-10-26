@@ -188,7 +188,7 @@ def admin_feedback_deleteNoComments():
             feedbacks=Feedback.query.all()
             return render_template('admin_feedback.html', feedbacks=feedbacks, error=error)
         
-        empty_values=["n/a", "N/A", "None", "NONE", "none"]
+        empty_values=["n/a", "N/A", "None", "NONE", "none", ""]
 
         feedback_to_del = []
         all_feedback=Feedback.query.all()

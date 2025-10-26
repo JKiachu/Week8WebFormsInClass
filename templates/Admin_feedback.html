@@ -40,11 +40,11 @@
         <p></p>
         <a href="{{url_for('admin_feedback_addSampleData')}}">Add Sample Data</a>
     </nav>
-    <h3>Delete Feedbacks by Comment</h3>
+    <h3>Delete Feedback with no Comments</h3>
     <form action="{{ url_for('admin_feedback_deleteNoComments') }}" method="post">
-    <label for="comment">Enter comment value to delete:</label>
+    <label for="comment">Enter Value:</label>
     <input type="text" name="comment" id="comment" placeholder="e.g., n/a, none">
-    <button type="submit">Delete Feedbacks</button>
+    <button type="submit">Delete</button>
 </form> 
 </body>
 

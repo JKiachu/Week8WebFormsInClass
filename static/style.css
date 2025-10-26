@@ -1,22 +1,40 @@
 body {
+background-image: url('/static/background.jpeg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
 font-family: Arial, sans-serif;
 max-width: 600px;
 margin: 0 auto;
 padding: 20px;
 }
+.content-wrapper {
+    background-color: rgba(0, 0, 0, 0.4); 
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h2, p, a {
+    color: white;
+}
+
 .error {
-color: red;
+    color: #ff6b6b;
 }
+
 .success {
-color: green;
+    color: #51cf66; 
 }
+
 form div {
-margin: 10px 0;
+    margin: 10px 0;
 }
+
 label {
-display: inline-block;
-width: 120px;
-}
-.element {
-  background-image: url('https://imgur.com/a/6ZJa7EH');
+    display: inline-block;
+    width: 120px;
+    color: white;
 }
