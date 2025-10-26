@@ -3,15 +3,38 @@
 {%block content%}
 
 <h1>All Feedback</h1>
+
+<form method="get" action="{{ url_for('admin_feedback') }}">
+    <label for="rating">Filter by Rating:</label>
+    <select name="rating" id="rating" onchange="this.form.submit()">
+        <option value="">All Ratings</option>
+        <option value="1" {% if current_rating == 1 %}selected{% endif %}>1 Star</option>
+        <option value="2" {% if current_rating == 2 %}selected{% endif %}>2 Stars</option>
+        <option value="3" {% if current_rating == 3 %}selected{% endif %}>3 Stars</option>
+        <option value="4" {% if current_rating == 4 %}selected{% endif %}>4 Stars</option>
+        <option value="5" {% if current_rating == 5 %}selected{% endif %}>5 Stars</option>
+        <option value="6" {% if current_rating == 6 %}selected{% endif %}>6 Stars</option>
+        <option value="7" {% if current_rating == 7 %}selected{% endif %}>7 Stars</option>
+        <option value="8" {% if current_rating == 8 %}selected{% endif %}>8 Stars</option>
+        <option value="9" {% if current_rating == 9 %}selected{% endif %}>9 Stars</option>
+        <option value="10" {% if current_rating == 10 %}selected{% endif %}>10 Stars</option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
+
 <table class="table table-stiped" border="1">
     <tr>
+        <th>ID</th>
         <th>Rating</th>
         <th>Comments</th>
+        <th>Created At</th>
     </tr>
     {%for feedback in feedbacks%}
     <tr>
+        <td>{{feedback.id}}</td>
         <td>{{ feedback.rating }}</td>
         <td>{{ feedback.comment }}</td>
+        <td>{{feedback.created_at.strftime('%m/%d/%Y')}}</td>
         <td>
             <div>
                 <a href="{{url_for('admin_feedback_edit')}}?feedbackId={{feedback.id}}"><button>Edit</button></a>

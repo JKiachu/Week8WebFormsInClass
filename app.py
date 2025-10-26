@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy  #part of slide 4 powerpoint(week 7)
 from datetime import datetime, timezone #part of slide 4 powerpoint(week 7)
-import random
-import time
 
 app = Flask(__name__)
 
@@ -107,8 +105,12 @@ def feedback():
 
 @app.route('/admin/feedback')
 def admin_feedback():
-    feedbacks=Feedback.query.all()
-    return render_template('Admin_feedback.html', feedbacks=feedbacks)
+    rating_filter=request.args.get('rating', type=int)
+    if rating_filter:
+        feedbacks=Feedback.query.filter_by(rating=rating_filter).all()
+    else:
+        feedbacks=Feedback.query.all()
+    return render_template('Admin_feedback.html', feedbacks=feedbacks, cuurent_rating=rating_filter)
 
 @app.route('/admin/feedback/append')
 def admin_feedback_append():
